@@ -1,6 +1,7 @@
 import os
 from flask import Flask, render_template
 from flask_uploads import DOCUMENTS, IMAGES, TEXT, UploadSet, configure_uploads
+from flask_socketio import SocketIO
 from werkzeug.utils import secure_filename
 from werkzeug.datastructures import  FileStorage
 
@@ -15,7 +16,7 @@ from App.controllers import (
 
 from App.views import views
 
-
+socketio = SocketIO()
 
 def add_views(app):
     for view in views:
@@ -29,6 +30,7 @@ def create_app(overrides={}):
     configure_uploads(app, photos)
     add_views(app)
     init_db(app)
+    socketio.init_app(app)
     jwt = setup_jwt(app)
     @jwt.invalid_token_loader
     @jwt.unauthorized_loader

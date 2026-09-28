@@ -1,0 +1,72 @@
+[
+    {
+        "question": "What is the capital of Trinidad and Tobago?",
+        "answerA": "Port of Spain",
+        "answerB": "San Fernando",
+        "answerC": "Scarborough",
+        "correctAnswer": 1
+    },
+    {
+        "question": "Which planet is known as the Red Planet?",
+        "answerA": "Venus",
+        "answerB": "Mars",
+        "answerC": "Jupiter",
+        "correctAnswer": 2
+    },
+    {
+        "question": "What is the chemical symbol for water?",
+        "answerA": "CO2",
+        "answerB": "O2",
+        "answerC": "H2O",
+        "correctAnswer": 3
+    },
+    {
+        "question": "Who wrote the play 'Romeo and Juliet'?",
+        "answerA": "William Shakespeare",
+        "answerB": "Charles Dickens",
+        "answerC": "Jane Austen",
+        "correctAnswer": 1
+    },
+    {
+        "question": "How many continents are there on Earth?",
+        "answerA": "5",
+        "answerB": "7",
+        "answerC": "9",
+        "correctAnswer": 2
+    },
+    {
+        "question": "What is the largest ocean on Earth?",
+        "answerA": "Atlantic Ocean",
+        "answerB": "Indian Ocean",
+        "answerC": "Pacific Ocean",
+        "correctAnswer": 3
+    },
+    {
+        "question": "Which gas do plants absorb from the atmosphere for photosynthesis?",
+        "answerA": "Carbon dioxide",
+        "answerB": "Nitrogen",
+        "answerC": "Oxygen",
+        "correctAnswer": 1
+    },
+    {
+        "question": "In which year did World War II end?",
+        "answerA": "1918",
+        "answerB": "1945",
+        "answerC": "1963",
+        "correctAnswer": 2
+    },
+    {
+        "question": "What is the hardest natural substance on Earth?",
+        "answerA": "Gold",
+        "answerB": "Iron",
+        "answerC": "Diamond",
+        "correctAnswer": 3
+    },
+    {
+        "question": "Which musical instrument has 88 keys?",
+        "answerA": "Piano",
+        "answerB": "Guitar",
+        "answerC": "Violin",
+        "correctAnswer": 1
+    }
+]
