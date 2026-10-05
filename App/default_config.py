@@ -1,2 +1,2 @@
 SQLALCHEMY_DATABASE_URI="sqlite:///temp-database.db"
-SECRET_KEY="secret key"
+SECRET_KEY="99c10719-6533-42b6-a64c-d7bc0592cd14"

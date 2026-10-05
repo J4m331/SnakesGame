@@ -4,9 +4,10 @@ from flask import jsonify
 
 from App.database import db
 from App.models import User
-from App.main import create_app, socketio
-from App.controllers import ( create_user, get_all_users_json, get_all_users, initialize, get_all_questions, get_local_ip )
+from App.main import create_app
+from App.controllers import ( create_user, get_all_users_json, get_all_users, initialize, get_all_questions, get_local_ip, get_all_players )
 
+import uuid
 
 # This commands file allow you to create convenient CLI commands for testing controllers
 
@@ -58,3 +59,11 @@ def list_question_command(format):
     print(jsonify(ques))
 
 app.cli.add_command(user_cli) # add the group to the cli
+
+player_cli = AppGroup('player', help = 'Player object commands')
+
+@player_cli.command("list", help="lists all players")
+def list_player_command():
+    print(get_all_players())
+    
+app.cli.add_command(player_cli)

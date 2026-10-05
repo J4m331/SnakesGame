@@ -1,7 +1,6 @@
 import os
 from flask import Flask, render_template
 from flask_uploads import DOCUMENTS, IMAGES, TEXT, UploadSet, configure_uploads
-from flask_socketio import SocketIO
 from werkzeug.utils import secure_filename
 from werkzeug.datastructures import  FileStorage
 
@@ -16,7 +15,7 @@ from App.controllers import (
 
 from App.views import views
 
-socketio = SocketIO()
+from .extensions import socketio
 
 def add_views(app):
     for view in views:

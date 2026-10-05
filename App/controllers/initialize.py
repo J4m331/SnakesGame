@@ -6,9 +6,7 @@ from App.database import db
 def initialize():
     db.drop_all()
     db.create_all()
-    create_player('alice')
-    create_player('bob')
-    create_player('charles')
-    create_player('dave')
-    create_player('eve')
+    create_player("Alice")
+    create_player("Bob")
+    create_player("Chad")
     load_questions("questions.json")

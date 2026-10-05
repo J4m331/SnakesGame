@@ -6,5 +6,9 @@
 
 {% block content %}
     <h1>Welcome to Snakes</h1>
-    <p>Scan the qrcode below to join</p>
+    {% if is_host %}
+        <a href="/host"><button>Host</button></a>
+    {% else %}
+        <a href="/join"><button>Join</button></a>
+    {% endif %}
 {% endblock %}

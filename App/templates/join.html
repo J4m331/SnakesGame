@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block title %}Snakes{% endblock %}
+{% block page %}Snakes{% endblock %}
+
+{{ super() }}
+
+{% block content %}
+    <form action="/join" method="POST">
+        <input type="text" name="username" required>
+        <input type="submit">
+    </form>
+{% endblock %}

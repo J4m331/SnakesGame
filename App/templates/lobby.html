@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block title %}Snakes{% endblock %}
+{% block page %}Snakes{% endblock %}
+
+{{ super() }}
+
+{% block content %}
+    <p>{{curr_player.username}}</p>
+    <form action="/rename" method="POST">
+        <input type="text" name="username" required>
+        <input type="submit">
+    </form>
+    {% for player in players %}
+        {% if player %}
+            <p>{{player.username}}</p>
+        {% endif %}
+    {% endfor %}
+{% endblock %}
