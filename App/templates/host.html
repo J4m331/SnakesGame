@@ -5,12 +5,55 @@
 {{ super() }}
 
 {% block content %}
+    <link rel="stylesheet" href="{{url_for('static', filename='playergrid.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='playertab.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='playercell.css')}}">
     <h1>Welcome to Snakes</h1>
     <p>Scan the qr code below to join</p>
     {% if qrcode %}
         <img src="data:image/png;base64,{{ qrcode }}" alt="QR Code">
+        <p>Or type in the link: {{ip}}</p>
     {% endif %}
-    {% for player in players %}
-        <a href="/ping/{{player.id}}">{{player}}</a>
-    {% endfor %}
+    <button onclick="startGame()">Start Game</button>
+    <button onclick="resetScores()">Reset Scores</button>
+    <div id="players" class="playergrid"></div>
+    <script src="https://cdn.socket.io/4.8.4/socket.io.min.js"></script>
+    <script>
+        const dashboardSocket = io();
+
+        function renderPlayers(players){
+            let playerDiv = document.getElementById('players');
+            let html = '';
+
+            for(let p of players){
+                html+= `<div class="playercell ${(p.online) ? `online` : `offline`}">`
+                html+= `<p class="name">${p.username}</p>`
+                html+= `<p>${p.score} points</p>`
+                html+= `<button onclick="removePlayer(${p.id})">Remove</button>`
+                html+= `</div>`
+            }
+            playerDiv.innerHTML = html;
+        }
+
+        async function removePlayer(id){
+            const responce = await fetch(`/rm_player/${id}`,{method:'DELETE'});
+            if(!responce.ok){
+                alert('Player could not be removed');
+            }
+        }
+
+        async function startGame(){
+            
+        }
+
+        async function resetScores(){
+            const responce = await fetch(`/rs_player_scores`,{method:'POST'});
+            if(!responce.ok){
+                alert('Scores could not be reset');
+            }
+            console.log("Scores reset")
+        }
+
+        dashboardSocket.on('roster', renderPlayers);
+    </script>
 {% endblock %}

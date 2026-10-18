@@ -1,4 +1,4 @@
-import os
+import os, secrets
 
 def load_config(app, overrides):
     if os.path.exists(os.path.join('./App', 'custom_config.py')):
@@ -15,6 +15,7 @@ def load_config(app, overrides):
     app.config["JWT_COOKIE_SECURE"] = False
     app.config["JWT_COOKIE_CSRF_PROTECT"] = False
     app.config["JWT_ACCESS_TOKEN_EXPIRES"] = 21600
+    #app.config['JWT_SECRET_KEY'] = secrets.token_hex(32)
     app.config['FLASK_ADMIN_SWATCH'] = 'darkly'
     for key in overrides:
         app.config[key] = overrides[key]

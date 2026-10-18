@@ -15,7 +15,7 @@ from App.controllers import (
 
 from App.views import views
 
-from .extensions import socketio
+from App.extensions import socketio
 
 def add_views(app):
     for view in views:
@@ -30,10 +30,11 @@ def create_app(overrides={}):
     add_views(app)
     init_db(app)
     socketio.init_app(app)
+    from App import socket_events
     jwt = setup_jwt(app)
     @jwt.invalid_token_loader
     @jwt.unauthorized_loader
     def custom_unauthorized_response(error):
         return render_template('401.html', error=error), 401
-    app.app_context().push()
+    #app.app_context()
     return app

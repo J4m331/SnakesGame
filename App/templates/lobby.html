@@ -5,14 +5,24 @@
 {{ super() }}
 
 {% block content %}
+    <h4>Waiting for host to start game</h4>
     <p>{{curr_player.username}}</p>
     <form action="/rename" method="POST">
         <input type="text" name="username" required>
         <input type="submit">
     </form>
     {% for player in players %}
-        {% if player %}
+        {% if player != curr_player %}
             <p>{{player.username}}</p>
         {% endif %}
     {% endfor %}
+
+    <script src="https://cdn.socket.io/4.8.4/socket.io.min.js"></script>
+    <script>
+        const lobbySocket = io();
+
+        lobbySocket.on('player_removed', () => {
+            window.location.href = '/join';
+        })
+    </script>
 {% endblock %}

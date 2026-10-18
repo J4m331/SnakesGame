@@ -6,6 +6,7 @@ from App.database import db
 from App.models import User
 from App.main import create_app
 from App.controllers import ( create_user, get_all_users_json, get_all_users, initialize, get_all_questions, get_local_ip, get_all_players )
+from App.extensions import socketio
 
 import uuid
 
@@ -13,6 +14,8 @@ import uuid
 
 app = create_app()
 
+with app.app_context():
+    initialize()
 
 # This command creates and initializes the database
 @app.cli.command("init", help="Creates and initializes the database")
@@ -67,3 +70,6 @@ def list_player_command():
     print(get_all_players())
     
 app.cli.add_command(player_cli)
+
+if __name__ == "__main__":
+    socketio.run(app, host="0.0.0.0", port=5000)

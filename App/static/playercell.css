@@ -1,0 +1,23 @@
+.playercell{
+    width: 400px;
+    margin: auto;
+    border: 3px solid;
+    border-radius: 3px;
+}
+
+.playercell p{
+    margin: 0%;
+}
+
+.playercell .name{
+    font-weight: bold;
+    font-size: large;
+}
+
+.playercell.online{
+    border-color: green;
+}
+
+.playercell.offline{
+    border-color: red;
+}

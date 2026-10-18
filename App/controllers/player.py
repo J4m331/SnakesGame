@@ -21,6 +21,9 @@ def rename_player(id, newname):
 def get_player(id):
     return db.session.get(Player, id)
 
+def get_player_by_username(username):
+    return db.session.scalar(db.select(Player).where(Player.username == username))
+
 def get_all_players():
     return db.session.scalars(db.select(Player)).all()
 
@@ -46,14 +49,15 @@ def reset_roles():
     if players:
         for player in players:
             player.role = None
-            db.session.commit()
+        db.session.commit()
         return True
     return False
 
 def remove_player(id):
     player = get_player(id)
     if player:
-        db.session.remove(player)
+        db.session.delete(player)
+        db.session.commit()
         return True
     return False
 
@@ -61,7 +65,8 @@ def remove_players():
     players = get_all_players()
     if players:
         for player in players:
-            db.session.remove(player)
+            db.session.delete(player)
+        db.session.commit()
         return True
     return False
 
@@ -69,7 +74,7 @@ def add_score(id, score):
     player = get_player(id)
     if player:
         player.score = player.score + score
-        db.session.commit
+        db.session.commit()
         return player.score
     return -1
 
@@ -83,7 +88,7 @@ def reset_scores():
     if players:
         for player in players:
             player.score = 0
-            db.session.commit
+        db.session.commit()
         return True
     return False
 
@@ -91,7 +96,7 @@ def set_online(id):
     player = get_player(id)
     if player:
         player.online = True
-        db.session.commit
+        db.session.commit()
         return True
     return False
 
@@ -99,6 +104,6 @@ def remove_online(id):
     player = get_player(id)
     if player:
         player.online = False
-        db.session.commit
+        db.session.commit()
         return True
     return False

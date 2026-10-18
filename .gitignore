@@ -4,3 +4,4 @@ __pycache__/
 *.pyd
 
 instance/temp-database.db
+questions.json
